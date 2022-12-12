@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Netflix India – Watch TV Shows Online, Watch Movies Online
+{% endblock title %}
+
+
+{% block others %}
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+{% endblock others %}
+
+
+{% block content %}
+
+{% include "partials/navbar.html" %}
+
+<header
+    class="min-h-screen bg-black bg-opacity-75 showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"
+    style="background-image:url('{% static "background_netflix.jpg" %}')">
+    <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+        <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
+            Unlimited movies, TV shows and more.
+        </h1>
+        <h3 class="text-xl md:text-xl py-5">
+            Watch anywhere. Cancel anytime.
+        </h3>
+        <h4 class="text-sm md:text-lg pb-3">
+            Ready to watch? Enter your email to create or restart your membership.
+        </h4>
+
+        <div class="w-full flex justify-center">
+            <div class="flex justify-center items-center w-11/12 md:w-10/12">
+                <input type="email" name="" id="" placeholder="Email address"
+                    class="md:py-5 py-4 px-5 placeholder-gray-500 rounded-tl-sm rounded-bl-sm outline-none  text-gray-900 bg-gray-50 block w-8/12 md:w-3/4">
+                <a href='{% url "account_login" %}' class='md:w-1/4'>
+
+                    <button
+                        class="bg-[#f40612] font-medium md:font-normal flex justify-center items-center py-4 px-2 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl hover:bg-red-500">
+                        <span class="mx-2">
+                            Get Started
+                        </span>
+                        <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style:"min-height: 70vh;">
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+            Enjoy on your TV.
+        </h2>
+        <h5 class="md:text-xl text-lg">
+            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.
+        </h5>
+    </div>
+    <div class='md:w-1/2 flex justify-center items-center'>
+        <img src="{% static 'tv.png' %}" class="w-8/12" alt="">
+    </div>
+</section>
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <div class='md:w-1/2 flex justify-center items-center '>
+        <img src="{% static 'mobile-0819.jpg' %}" class="w-8/12" alt="">
+    </div>
+
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+            Download your shows to watch offline.
+        </h2>
+        <h5 class="md:text-xl text-lg">
+            Save your favorites easily and always have something to watch.
+        </h5>
+    </div>
+
+</section>
+
+<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+        <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+            Create profiles for kids.
+        </h2>
+        <h5 class="md:text-xl text-lg">
+            Send kids on adventures with their favorite characters in a space made just for them—free with your
+            membership.
+        </h5>
+    </div>
+    <div class='md:w-1/2 flex justify-center items-center'>
+        <img src="{% static 'netflix_kid.png' %}" class="w-8/12" alt="">
+    </div>
+</section>
+<section class="w-full ">
+    <div class="w-full  ">
+        <h1 class="text-center text-5xl mt-16 font-semibold">Frequently Asked Questions</h1>
+        <ul class="px-96 mt-14">
+            {% for key,value in list.items %}
+            <li class="bg-[#222] " >
+                <button class="h-20 flex w-full items-center justify-between  mt-3" onclick="showItem({value})" >
+                <span class="font-medium text-3xl mx-5 " > {{key}}</span>
+                <span><i class="fa-solid fa-plus fa-lg mx-5 text-2xl"></i></span>
+            </button>
+            <div class="bg-black w-full h-2"></div>
+            <div class="w-full p-5 text-xl hidden " id="visiblity" >
+                <span id="" data-uia="">
+                    {{value}}
+                </span></div>
+            </li>
+           
+            {% endfor %}
+
+        </ul>
+        <div class="justify-center mt-20 mx-14 ">
+            <h1 class="text-xl text-center"> Ready to watch? Enter your email to create or restart your membership.
+            </h1>
+            <div class="w-full flex justify-center px-72 mr-5 mt-11 ">
+                <div class="flex justify-center items-center w-11/12 md:w-10/12">
+                    <input type="email" name="" id="" placeholder="Email address"
+                        class="md:py-5 py-4 px-2 placeholder-gray-500 rounded-tl-sm rounded-bl-sm outline-none  text-gray-900 bg-gray-50 block w-8/12 md:w-3/4">
+                    <a href='{% url "account_login" %}' class='md:w-1/4'>
+
+                        <button
+                            class="bg-[#f40612] font-medium md:font-normal flex justify-center items-center py-4 px-2 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl hover:bg-red-500">
+                            <span class="mx-2">
+                                Get Started
+                            </span>
+                            <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="w-full h-2 mt-24 bg-[#222]"></div>
+<footer class=" ml-80 py-10 mr-[500px] ">
+   <div class="self-center items-center" >
+       <p class="text-[#737373]"  >Questions? Call <a href="" class="hover:underline" >000-000-000-000</a></p>
+       
+       <div class="flex flex-row justify-between" >
+    <ul class="text-[#737373] mt-10">
+        <li class="mt-4"><a href="" class="hover:underline "><span>FAQ</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Investor Relations</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Privacy</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Speed Test</span></a></li>
+    </ul>
+
+    <ul class="text-[#737373] mt-10">
+        <li class="mt-4"><a href="" class="hover:underline "> <span> Help Centre</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "> <span> Jobs</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "> <span> Cookie Preferences</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "> <span> Legal Notices</span></a></li>
+    </ul>
+    <ul class="text-[#737373] mt-10">
+        <li class="mt-4"><a href="" class="hover:underline "><span>Account</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Ways to Watch</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Corporate Information</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span>Only on Netflix</span></a></li>
+    </ul>
+
+    <ul class="text-[#737373] mt-10">
+        <li class="mt-4"><a href="" class="hover:underline "><span class="text-md">Media Centre</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span class="text-md">Terms of Use</span></a></li>
+        <li class="mt-4"><a href="" class="hover:underline "><span class="text-md">Contact Us</span></a></li>
+    </ul>
+</div>
+<div class="border-2  border-[#737373] w-28 items-center justify-items-center rounded mt-6">
+<select  class="border-spacing-3 rounded border-3 box-border px-3 py-3  border-slate-900 bg-transparent" tabindex="0" >
+    <option class="m-10" selected="" lang="en" value="/in/" data-language="en" data-country="IN">English</option>
+    <option lang="hi" value="/in-hi/" data-language="hi" data-country="IN">हिन्दी</option>
+</select>
+</div>
+   </div>
+</footer>
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+  function  showItem(value){
+    console.log(value )
+
+    }
+</script>
+  
+{% endblock scripts %}

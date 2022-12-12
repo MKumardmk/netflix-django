@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+    {% load static %}
+    {% block title %}
+    
+    Netflix - Login
+    {% endblock title %}
+    
+    {% block others %}
+    
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    {% endblock others %}
+{% block content %}
+
+   
+    {% include '../partials/navbar.html' with AUTH='false' %}
+    <header class="h-screen w-full bg-black bg-opacity-75 showcase border-gray-600 border-b-8 flex justify-center py-20 bg-no-repeat"  style="background-image: url('{% static 'background_netflix.jpg' %}');">
+        <div class="z-10 h-full py-32 md:py-0 mt-24 text-gray-100 w-6/12  flex  flex-col justify-center items-center">
+            <form method='POST' class="bg-black bg-opacity-70 py-8 px-16  min-h-[650px] rounded-md w-[480px]  justify-center items-center" >
+                <h1 class="text-4xl font-semibold text-start">
+                    Sign In
+                </h1>
+                {% csrf_token %}
+                <div class="mt-10" > 
+                    <input class="p-5 bg-[#333] rounded-sm text-white  outline-none  w-full h-[55px]" type="email" name="login" id="id_login" placeholder="Email or phone number">
+                </div>
+                <div class='my-3 mt-5'> 
+                    
+                    <input class="p-5 bg-[#333] rounded-sm text-white  outline-none w-full h-[55px]" type="password" name="password" id="id_password" placeholder="Password">
+                </div>
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                    <button class="py-2 px-4 mt-10 bg-[#e50914]  w-full h-[55px] text-gray-100 font-medium text-lg rounded-md">
+                       Sign In
+                    </button>
+
+                    <div class="flex flex-row mt-4 justify-between" >
+                        <div class="form-check">
+                        <input type="checkbox" id="remember" name="remember" value="Bike" class=" required:border-red-500 mr-1 h-4 w-4 bg-[text-[#b3b3b3]" >
+                        <label for="remember" class="text-[#b3b3b3]">Remember me</label><br>
+                    </div>
+                    <p><a href="" class="hover:underline"><span class="text-[#b3b3b3]" >Need help?</span></a></p>
+                    </div>
+
+
+                    <p class="text-[#b3b3b3] mt-16" >New to Netflix? <a href="/" class="hover:underline"><span class="text-white text-[18px]" >Sign up now.</span></a></p>
+                
+            </form>
+        </div>
+    </header>
+{% endblock content %}
